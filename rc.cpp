@@ -60,6 +60,9 @@ bool rc::jeValidni(string cislo_R) {
     if (cislo_R.length() != 10) {
         return false;
     }
+    if (!std::all_of(cislo_R.begin(), cislo_R.end(), ::isdigit)) { //metoda z knihovny algorithm,  kontrola, zda jsou všechny znaky číslice
+        return false;
+    }
     if (stoi(cislo_R.substr(0, 9)) % 11 == stoi(cislo_R.substr(9, 1))) {
         return true;
     } else if (stoi(cislo_R.substr(0, 9)) % 11 == 10 && stoi(cislo_R.substr(9, 1)) == 0) {
